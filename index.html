@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suzane Marcelly Albino - QA & Front-End Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0f0c29;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Partículas animadas de fundo */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(102, 126, 234, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translateY(-100px) translateX(50px) scale(1.2);
+                opacity: 0.6;
+            }
+            50% {
+                transform: translateY(-200px) translateX(-30px) scale(0.8);
+                opacity: 0.4;
+            }
+            75% {
+                transform: translateY(-150px) translateX(80px) scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+            animation: pulse 2s infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            color: #e0e0e0;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            font-size: 0.95em;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(102, 126, 234, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 35px;
+            border-radius: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .section:hover::before {
+            left: 100%;
+        }
+
+        .section:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid rgba(102, 126, 234, 0.6);
+            text-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.5s ease;
+        }
+
+        .section:hover h2::after {
+            width: 100%;
+        }
+
+        .about-text {
+            font-size: 1.05em;
+            color: #e0e0e0;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .experience-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border-radius: 20px;
+            border-left: 5px solid #667eea;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+            border-radius: 50%;
+        }
+
+        .experience-item:hover::before {
+            width: 500px;
+            height: 500px;
+        }
+
+        .experience-item:hover {
+            transform: translateX(15px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            border-left-width: 8px;
+        }
+
+        .experience-title {
+            color: #fff;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(118, 75, 162, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-list {
+            list-style: none;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .experience-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .experience-list li:hover {
+            color: #fff;
+            transform: translateX(10px);
+        }
+
+        .experience-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            color: white;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transition: all 0.6s ease;
+            transform: scale(0);
+        }
+
+        .skill-category:hover::after {
+            transform: scale(1);
+        }
+
+        .skill-category:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+            border-color: rgba(102, 126, 234, 0.8);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 18px;
+            font-size: 1.3em;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+            padding-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-category li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category li:hover {
+            transform: translateX(10px);
+            color: #667eea;
+        }
+
+        .skill-category li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .education {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.3) 0%, rgba(245, 87, 108, 0.3) 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            font-size: 1.2em;
+            text-align: center;
+            border: 2px solid rgba(240, 147, 251, 0.5);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education::before {
+            content: '🎓';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+
+        .education:hover::before {
+            transform: translate(-50%, -50%) scale(1.3) rotate(15deg);
+            opacity: 0.2;
+        }
+
+        .education:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.4);
+        }
+
+        .certificates {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .certificate {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 100%);
+            color: white;
+            padding: 18px 28px;
+            border-radius: 30px;
+            font-size: 0.98em;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+        }
+
+        .certificate:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .certificate:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            font-size: 0.95em;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas animadas -->
+    <div class="particles" id="particles"></div>
+
+    <div class="container">
+        <header>
+            <h1>Suzane Marcelly Albino</h1>
+            <p class="subtitle">QA Analyst | Front-End Developer | Data Quality Specialist</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    📍 Jaboatão dos Guararapes/PE
+                </div>
+                <div class="contact-item">
+                    📱 +55 81 99523-6696 / 98947-8349
+                </div>
+                <div class="contact-item">
+                    ✉️ Suzanealbino1@gmail.com
+                </div>
+                <div class="contact-item">
+                    🔗 <a href="https://www.linkedin.com/in/suzanemarcellyalbino/" target="_blank" style="color: #fff; text-decoration: none;">LinkedIn</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>Sobre Mim</h2>
+            <p class="about-text">
+                Profissional em Análise e Desenvolvimento de Sistemas com sólida experiência em Qualidade de Software (QA) de ponta a ponta, abrangendo testes manuais, automatizados e de API. Possuo expertise em desenvolvimento web com HTML, CSS, JavaScript e Angular, além de especialização na otimização de produtos digitais. Atuo na curadoria e garantia da qualidade de datasets multimodais (texto, imagens e vídeos) para Inteligência Artificial, com foco na análise crítica de conformidade e localização de conteúdo. Meu objetivo é aplicar meu conhecimento técnico e analítico para garantir a entrega de soluções robustas e de alta performance, trabalhando com metodologias ágeis (Scrum/Kanban) e fornecendo feedback estratégico para o aprimoramento de algoritmos.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Experiência Profissional</h2>
+            
+            <div class="experience-item">
+                <div class="experience-title">Analista de Qualidade e Otimização de Anúncios Digitais</div>
+                <ul class="experience-list">
+                    <li><strong>Otimização Estratégica e QA de Conteúdo:</strong> Conduzi a avaliação e classificação de ads em larga escala, aplicando rigorosos critérios de Garantia de Qualidade (end-to-end QA) para otimizar a relevância e o desempenho dos anúncios em resultados de busca.</li>
+                    <li><strong>Análise de Mercado e Localização:</strong> Realizei análise crítica de compliance e adequação cultural do conteúdo publicitário, assegurando a precisão linguística e cultural para os mercados de Português (Brasil) e Inglês.</li>
+                    <li><strong>Melhoria de Performance:</strong> Minhas classificações e análises contribuíram diretamente para a melhoria da qualidade do ranking e da experiência do usuário na plataforma.</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Analista de Qualidade de Dados e Curadoria Multimodal</div>
+                <ul class="experience-list">
+                    <li><strong>QA de Dados para Inteligência Artificial:</strong> Responsável por assegurar a alta qualidade e consistência de datasets multimodais (texto, imagens e vídeos), crucial para o treinamento, machine learning e avaliação de sistemas de IA/ML.</li>
+                    <li><strong>Anotação e Conformidade Técnica:</strong> Executei anotação e revisão de dados com rigor analítico, garantindo 100% de conformidade com diretrizes técnicas complexas e políticas de governança de dados.</li>
+                    <li><strong>Contribuição para Produto e Algoritmos:</strong> Atuei na interface QA/Produto, avaliando métricas de engajamento e fornecendo feedback estratégico para aprimorar algoritmos de curadoria e recomendação de conteúdo.</li>
+                    <li><strong>Especialista em Localização:</strong> Liderança na tradução técnica e adaptação cultural de materiais, garantindo a precisão e a escalabilidade do conteúdo em novos mercados.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Qualidade de Software (QA)</h3>
+                    <ul>
+                        <li>Testes Manuais (end-to-end)</li>
+                        <li>Testes Automatizados (Cypress)</li>
+                        <li>Testes de API</li>
+                        <li>Bug Tracking & Gestão</li>
+                        <li>Análise de Requisitos</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Desenvolvimento Web</h3>
+                    <ul>
+                        <li>HTML & CSS</li>
+                        <li>JavaScript</li>
+                        <li>Angular (Básico)</li>
+                        <li>Front-End Development</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Análise de Dados & IA</h3>
+                    <ul>
+                        <li>QA de Dados Multimodais</li>
+                        <li>Curadoria para Machine Learning</li>
+                        <li>SQL (Básico)</li>
+                        <li>Análise de Métricas</li>
+                        <li>Otimização de Algoritmos</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Metodologias & Ferramentas</h3>
+                    <ul>
+                        <li>Scrum & Kanban</li>
+                        <li>Jira</li>
+                        <li>Localização (PT-BR, EN, ES)</li>
+                        <li>Compliance Cultural</li>
+                        <li>Análise Crítica</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Formação Acadêmica</h2>
+            <div class="education">
+                <strong>Análise e Desenvolvimento de Sistemas</strong><br>
+                Em Andamento
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Certificações</h2>
+            <div class="certificates">
+                <div class="certificate">Teste e QA – Alura (Básico)</div>
+                <div class="certificate">Teste e QA – Qazando (Cursando)</div>
+                <div class="certificate">HTML, CSS & JavaScript (Básico)</div>
+                <div class="certificate">Angular (Básico)</div>
+                <div class="certificate">SQL (Básico)</div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Suzane Marcelly Albino - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Criar partículas animadas
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            const size = Math.random() * 60 + 20;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            
+            // Cores variadas
+            const colors = [
+                'rgba(102, 126, 234, 0.5)',
+                'rgba(118, 75, 162, 0.5)',
+                'rgba(240, 147, 251, 0.4)',
+                'rgba(245, 87, 108, 0.4)'
+            ];
+            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            
+            particlesContainer.appendChild(particle);
+        }
+
+        // Efeito parallax suave no mouse
+        document.addEventListener('mousemove', (e) => {
+            const particles = document.querySelectorAll('.particle');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            particles.forEach((particle, index) => {
+                const speed = (index % 3 + 1) * 20;
+                particle.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
